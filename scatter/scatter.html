@@ -76,12 +76,20 @@ var y = d3.scale.linear()
 var xAxis = d3.svg.axis()
 .scale(x)
 .orient("bottom")
-.ticks(4);
+.ticks(5)
+.tickFormat(function(d, i)
+           {
+  return d/1000 + "k";
+});
 
 var yAxis = d3.svg.axis()
 .scale(y)
 .orient("left")
-.ticks(4);
+.ticks(5)
+.tickFormat(function(d, i)
+           {
+  return d/1000 + "k";
+});
 
 d3.csv("DataFinal.csv", function(error, data)
 {
