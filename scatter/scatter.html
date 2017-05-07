@@ -177,9 +177,9 @@ d3.csv("DataFinal.csv", function(error, data)
 	function plot(p)
 	{
 		var cell = d3.select(this);
-
-		x.domain([0,d3.max(domainPerField[p.x]+100)]);
-		y.domain([0,d3.max(domainPerField[p.y]+100)]);
+		
+		x.domain([0,d3.max(domainPerField[p.x])+100]);
+   		y.domain([0,d3.max(domainPerField[p.y])+100]);
 
 		cell.append("rect")
 			.attr("class", "frame")
