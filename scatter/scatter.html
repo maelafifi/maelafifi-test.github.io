@@ -81,9 +81,7 @@ var xAxis = d3.svg.axis()
 var yAxis = d3.svg.axis()
 .scale(y)
 .orient("left")
-.ticks(6);
-
-var color = d3.scale.category10();
+.ticks(4);
 
 d3.csv("DataFinal.csv", function(error, data)
 {
@@ -143,27 +141,28 @@ d3.csv("DataFinal.csv", function(error, data)
 		.attr("dx", "-1.01em")
 		.attr("y", padding)
 		.attr("dy", "0em")
-		.text(function(d) { 
-    			if(d.x === "earningsMen")
-          {
-            return "Median Mens Earning";
-          }
-          else if(d.x === "earningsWomen")
-          {
-            return "Median Womens Earning";
-          }
-          else if(d.x === "earningsTotal")
-          {
-            return "Median Total Earnings";
-          }
-          else if(d.x === "workersWomen")
-          {
-            return "Women Workers (In Thousands)";
-          }
-          else if(d.x === "workersMen")
-          {
-            return "Men Workers (In Thousands)";
-          }
+		.text(function(d) 
+	  { 
+  if(d.x === "earningsMen")
+  {
+    return "Median Mens Earning (Weekly)";
+  }
+  else if(d.x === "earningsWomen")
+  {
+    return "Median Womens Earning (Weekly)";
+  }
+  else if(d.x === "earningsTotal")
+  {
+    return "Median Total Earnings (Weekly)";
+  }
+  else if(d.x === "workersWomen")
+  {
+    return "Women Workers (In Thousands)";
+  }
+  else if(d.x === "workersMen")
+  {
+    return "Men Workers (In Thousands)";
+  }
   });
 
 
