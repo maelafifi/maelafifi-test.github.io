@@ -259,7 +259,7 @@ rect
 				zoomer.x(x.domain([0, 2500])).y(y.domain([0, 2500]));
 				var svg = d3.select("#scatter").transition();
 				svg.select(".x.axis").duration(750).call(xAxis)
-				.select(".label").text("Average Earnings");
+				.select(".label").text("Average Earnings (weekly)");
 				objects.selectAll(".dot").transition().duration(1000)
 				.attr("transform", transform); 
         		count--;
@@ -271,7 +271,7 @@ rect
 				zoomer.x(x.domain([0, 2500])).y(y.domain([0, 2500]));
 				var svg = d3.select("#scatter").transition();
 				svg.select(".x.axis").duration(750).call(xAxis)
-				.select(".label").text("Men Earnings");
+				.select(".label").text("Men Earnings (weekly)");
 				objects.selectAll(".dot").transition().duration(1000)
 				.attr("transform", transform);
 				count++;  
