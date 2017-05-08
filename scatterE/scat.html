@@ -185,32 +185,6 @@ rect
 			.style("text-anchor", "end")
 			.text("Women Earnings (Weekly)");
 		
-		svg.append("g")
-			.classed("x axis", true)
-			.attr("transform", "translate(0," + height + ")")
-			.call(xAxis)
-			.append("text")
-			.classed("label", true)
-			.attr("x", width+250)
-			.attr("y", margin.bottom - 280)
-			.style("text-anchor", "end")
-    			.style("font", "24px times")
-    			.style("fill", "blue")
-			.text("Women to Men Earnings");
-    
-    		svg.append("g")
-			.classed("x axis", true)
-			.attr("transform", "translate(0," + height + ")")
-			.call(xAxis)
-			.append("text")
-			.classed("label", true)
-			.attr("x", width+170)
-			.attr("y", margin.bottom - 250)
-			.style("text-anchor", "end")
-    			.style("font", "24px times")
-    			.style("fill", "blue")
-			.text("Weekly");
-		
 		var objects = svg.append("svg")
 			.classed("objects", true)
 			.attr("width", width)
