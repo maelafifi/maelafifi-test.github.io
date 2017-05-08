@@ -3,12 +3,12 @@ Chief executives,832,2419,1876,318,2303,1
 General and operations managers,626,1358,1037,250,1266,1
 Marketing and sales managers,518,1745,1142,403,1468,1
 Administrative services managers,101,1398,952,71,1261,1
-Computer and information systems managers,443,1756,1680,150,1738,1
+Computer and information systems managers,443,1756,1680,150,1738,2
 Financial managers,527,1670,1157,578,1423,1
 Human resources managers,73,1737,1283,190,1340,1
 Industrial production managers,201,1409,1219,66,1361,1
 Purchasing managers,95,1400,1169,92,1274,1
-Transportation storage and distribution managers,237,990,988,51,990,1
+Transportation storage and distribution managers,237,990,988,51,990,2
 Education administrators,297,1528,1280,541,1381,1
 Food service managers,410,853,632,350,739,1
 Lodging managers,59,1068,764,64,929,1
@@ -39,7 +39,7 @@ Engineering technicians,275,1075,793,75,997,1
 Medical scientists,69,1250,1169,57,1211,1
 Physical scientists - all other,131,1727,1323,111,1416,1
 Life physical and social science,62,949,826,57,894,1
-Counselors,184,892,907,473,904,0
+Counselors,184,892,907,473,904,2
 Social workers,127,1039,884,557,906,1
 Clergy,315,1070,893,53,1039,1
 Lawyers,446,2086,1619,299,1897,1
@@ -47,13 +47,13 @@ Postsecondary teachers,535,1356,1152,445,1247,1
 Elementary/middle school teachers,605,1126,981,2231,1009,1
 Secondary school teachers,403,1146,1074,562,1111,1
 Other teachers and instructors,156,1135,786,214,938,1
-Teacher assistants,56,501,525,532,523,0
+Teacher assistants,56,501,525,532,523,2
 Designers,290,1267,922,297,1086,1
 Producers and directors,78,1228,1030,50,1163,1
 Editors,64,1112,1035,56,1053,1
 Pharmacists,89,2096,1839,133,1924,1
 Physicians and surgeons,497,2343,1476,308,1916,1
-Physical therapists,69,1348,1306,128,1325,1
+Physical therapists,69,1348,1306,128,1325,2
 Registered nurses,285,1261,1143,2213,1154,1
 Clinical lab tech,97,1071,834,198,887,1
 Diagnostic related tech,79,1156,936,175,1041,1
@@ -66,7 +66,7 @@ Security guards/surveillance officers,576,597,516,152,585,1
 Chefs and head cooks,288,632,519,68,614,1
 Food Prep Supervisors,174,666,485,251,528,1
 Cooks,892,459,421,515,444,1
-Food preparation workers,215,432,413,262,419,0
+Food preparation workers,215,432,413,262,419,2
 Bartenders,131,701,498,122,602,1
 Food preparation and Servers,72,381,402,125,396,1
 Waiters and waitresses,342,504,441,607,470,1
@@ -81,7 +81,7 @@ Retail sales supervisors,1321,857,630,1047,743,1
 Non-retail sales supervisors,552,1161,1004,230,1137,1
 Cashiers,402,475,403,965,414,1
 Retail salespersons,1103,730,514,728,623,1
-Advertising sales agents,122,1034,999,81,1023,1
+Advertising sales agents,122,1034,999,81,1023,2
 Insurance sales agents,218,1166,676,205,839,1
 Financial service agents,155,1458,951,63,1351,1
 Sales reps - all other,282,1202,826,145,1040,1
@@ -96,10 +96,10 @@ Dispatchers,126,734,671,153,704,1
 Postal service clerks,58,999,805,53,901,1
 Postal service carriers,185,1020,931,119,981,1
 Production planning and expediting clerks,113,935,765,111,853,1
-Shipping receiving and traffic clerks,322,602,583,151,596,1
-Stock clerks and order fillers,643,533,526,371,530,1
+Shipping receiving and traffic clerks,322,602,583,151,596,2
+Stock clerks and order fillers,643,533,526,371,530,2
 Secretaries and administrative assistants,133,831,708,2078,713,1
-Data entry,51,655,630,170,638,1
+Data entry,51,655,630,170,638,2
 Office clerks general,140,707,648,760,654,1
 Office and administrative support,107,855,751,351,768,1
 Miscellaneous agricultural workers,547,524,423,111,508,1
