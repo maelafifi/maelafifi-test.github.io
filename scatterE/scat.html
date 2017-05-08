@@ -157,7 +157,7 @@ h2.title
 		var zoomer = d3.behavior.zoom()
 			.x(x)
 			.y(y)
-			.scaleExtent([.25, 5])
+			.scaleExtent([.25, 2.5])
 			.on("zoom", zoom);
 		var svg = d3.select("#scatter")
 			.append("svg")
