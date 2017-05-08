@@ -14,6 +14,7 @@ rect
 	background-color: pink;
 	color: blue;
 	font-size: 12px;
+	transform: translateX(18vw);
 }
 .axis path,
 .axis line
@@ -60,13 +61,20 @@ rect
 	top: 100%;
 	left: 0;
 }
+
+h2.title
+{
+	transform: translateX(21vw);
+	font: sans-serif;
+}
 </style>
 </head>
 <body>
 
+<h2 class = "title">Ratio of Women to Men/Average Pay</h2>
+<input type="button" id="xAxis" value="Click here to view average earnings compared to womens earnings">
+
 <center>
-	<h2>Ratio of Women to Men/Average Pay</h2>
-	<input type="button" id="xAxis" value="Click here to view average earnings compared to womens earnings">
 	<div id="scatter"></div>
 </center>
 <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
