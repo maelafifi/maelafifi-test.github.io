@@ -119,7 +119,7 @@ rect
 		
 		var color = d3.scale.ordinal()
 			.domain(data.map(function(d){ return +d.more;}))
-			.range(['blue', '#fa9fb5']);
+			.range(['blue','green', '#fa9fb5']);
 		
 		var tip = d3.tip()
 			.attr("class", "d3-tip")
@@ -197,10 +197,15 @@ rect
 			.attr("transform", transform)
 			.style("fill", function(d)
 			{
-				if(d[xCat] > d[yCat])
+				var rat = d[xCat]/d[yCat];
+				if(rat > 1.05)
 				{
 					return "blue";
 				}
+      				else if(rat>.95)
+          			{
+            				return "green";
+          			}
 				else
 				{
 					return "#fa9fb5";
