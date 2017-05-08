@@ -129,6 +129,9 @@ rect
 			.html(function(d)
 			{
 				var z;
+				var l = "Earning Ratio: ";
+				var ratio = d[yCat]/d[xCat];
+        			ratio = ratio.toPrecision(3);
         		if(xCat === "earningsMen")
 				{
 					z = "Men's Earnings";
@@ -139,7 +142,8 @@ rect
 				}
 				return "Occupation: " + d[Occ] + "<br>" 
 				+ z +": " + d[xCat] + "<br>"
-				+ "Women's Earnings: " + d[yCat];
+				+ "Women's Earnings: " + d[yCat] + "<br>"
+        			+ l + ratio;;
 			});
 
 		var zoomer = d3.behavior.zoom()
