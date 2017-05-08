@@ -7,6 +7,14 @@ rect
   fill: transparent;
   shape-rendering: crispEdges;
 }
+	
+#xAxis
+{
+  width: 33em;  height: 2em;
+  background-color: blue;
+  color: pink;
+  font-size: 16px;
+}
 
 .axis path,
 .axis line
@@ -62,7 +70,7 @@ rect
 </head>
 <body>
 
-<center><input type="button" name="xAxis" value="Click here to view average earnings compared to womens earnings">
+<center><input type="button" id="xAxis" value="Click here to view average earnings compared to womens earnings">
 <div id="scatter"></div></center>
 <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.3/d3-tip.min.js"></script>
