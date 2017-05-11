@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <center><h2 class = "title">Ratio of Women to Men Pay, by State -- All Occupations</h2></center>
 <div id="scatter"></div>
-<svg class = "chart"></svg>
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.3/d3-tip.min.js"></script>
 <style type="text/css">
@@ -38,7 +37,7 @@ path:hover
 	font-weight: bold;
 	padding: 12px;
 	background: rgba(0, 0, 0, 0.8);
-	color: #fff;
+  color: #fff;
 	border-radius: 2px;
 }
 
@@ -74,7 +73,7 @@ body
 
 .chart rect
 {
-	fill: red;
+	fill: #4ea7db;
 }
 
 .chart text
@@ -83,6 +82,8 @@ body
 	font: 10px sans-serif;
 	text-anchor: end;
 }
+
+
 
 </style>
 </head>
@@ -156,13 +157,16 @@ d3.csv("data.csv", function(data)
 	
 		var tip = d3.tip()
 			.attr("class", "d3-tip")
-			.offset([-10, 0])
-			.html(function(d)
+			.offset([-40, 0])
+    	.html(function(d)
 			{
-				return "State: " + d.properties.name + "<br>"
-				+ "Average Women Earnings: $" + d.properties.women + "<br>"
-				+ "Average Men Earnings: $" + d.properties.men + "<br>"
-				+ "Rate: " + d.properties.value;
+        var x = +d.properties.value;
+        x = x.toPrecision(2);
+        return "State: " + d.properties.name + "<br><br>"
+				+ "Averages:" + "<br>"
+        + "<div id='tipDiv'></div><br>" 
+				+ "Women make " + x + " cents per dollar" + "<br>" 
+        + "that a man makes in " + d.properties.name;
 			});
 
 		svg.call(tip);
@@ -180,9 +184,56 @@ d3.csv("data.csv", function(data)
 			})
 			.attr("class", "feature")
 			.on("click", clicked)
-			.on("mouseover", tip.show)
-			.on("mouseout", tip.hide);; 
-	});
+			.on("mouseover",  function(d)
+			{
+				tip.show(d);
+				var state = d.properties.name;
+				var men = d.properties.men;
+				var women = d.properties.women;
+				var dataset = [men, women];
+				var barHeight = 20;
+      			
+      			var tipSVG = d3.select("#tipDiv")
+      				.append("svg")
+      				.attr("width", 150)
+      				.attr("height", barHeight * dataset.length);
+     				
+     			var x = d3.scale.linear()
+     				.domain([0, d3.max(dataset)])
+     				.range([0, 150]);
+
+				var bar = tipSVG.selectAll("g")
+					.data(dataset)
+					.enter().append("g")
+					.attr("transform", function(d, i)
+					{
+						return "translate(0," + i * barHeight + ")";
+					});
+				
+				bar.append("rect")
+					.attr("width", x)
+					.attr("height", barHeight - 1)
+					.attr("fill", "blue");
+
+				bar.append("text")
+					.attr("x", 2)
+					.attr("y", barHeight / 2)
+					.attr("dy", ".35em")
+					.attr("fill", "white")
+					.text(function(d)
+					{
+						if(d === d3.max(dataset))
+						{
+							return "Mens Salary: $" + d;
+						}
+						else
+						{
+							return "Womens Salary: $" + d;
+						}
+					});
+				})
+				.on("mouseout", tip.hide);; 
+			});
 	
 	var w = 140, h = 300;
 	
@@ -237,11 +288,6 @@ d3.csv("data.csv", function(data)
 
 function clicked(d)
 {
-	d3.select('.chart').text('');
-	var state = d.properties.name;
-	var men = d.properties.men;
-	var women = d.properties.women;
-	
 	if (active.node() === this)
 	{
 		return reset();
@@ -249,48 +295,13 @@ function clicked(d)
 	
 	active.classed("active", false);
 	active = d3.select(this).classed("active", true);
-	
-	var dataset = [men, women];
-	var barHeight = 20;
-
-	var x = d3.scale.linear()
-		.domain([0, d3.max(dataset)])
-		.range([0, width/2]);
-
-	var chart = d3.select(".chart")
-		.attr("width", width)
-		.attr("height", barHeight * dataset.length);
-
-	var bar = chart.selectAll("g")
-		.data(dataset)
-		.enter().append("g")
-		.attr("transform", function(d, i)
-		{
-			return "translate(0," + i * barHeight + ")";
-		});
-
-	bar.append("rect")
-		.attr("width", x)
-		.attr("height", barHeight - 1);
-
-	bar.append("text")
-		.attr("x", function(d)
-		{
-			return x(d)/2+5;
-		})
-		.attr("y", barHeight / 2)
-		.attr("dy", ".35em")
-		.text(function(d)
-		{
-			return d;
-		});
   
 	var bounds = path.bounds(d),
 		dx = bounds[1][0] - bounds[0][0],
 		dy = bounds[1][1] - bounds[0][1],
 		x = (bounds[0][0] + bounds[1][0]) / 2,
 		y = (bounds[0][1] + bounds[1][1]) / 2,
-		scale = .65 / Math.max(dx / width, dy / height),
+		scale = .6 / Math.max(dx / width, dy / height),
 		translate = [width / 2 - scale * x, height / 2 - scale * y];
 
 	g.transition()
@@ -301,7 +312,6 @@ function clicked(d)
 
 function reset()
 {
-	d3.select('.chart').text('');
 	active.classed("active", false);
 	active = d3.select(null);
 	
@@ -310,7 +320,6 @@ function reset()
 		.style("stroke-width", "1.5px")
 		.attr("transform", "");
 }
-
 d3.select(self.frameElement).style("height", height + "px");
 </script>
 </body>
