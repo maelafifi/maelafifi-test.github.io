@@ -57,43 +57,12 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <h1 style = "color: black;">Are women REALLY paid less than men?</h1>
+                <h1 style = "color: black;">Are women REALLY paid less than men? Lets take a look at how different states stack up</h1>
             </div>
         </div>
     </header>
 
-    <div class="jumbotron text-center" id="">
-      <h1>The unbelievable truth behind whether or not women are paid less than men...</h1>
-      <p style = "font-size:20px;"></p>
-    </div>
-
     <section class="content" id = "vis1">
-      <iframe src="scatterE/scat.html" class="center" scrolling="no" height="638"></iframe>
-      <p style= "color:black; font-size:10px;"> Source: U.S. Government, Bureau of Labor Statistics -- https://www.bls.gov/cps/cpsaat39.htm</p>
-
-    </section>
-  
-  <section class="no-padding content">
-
-        <p style="color:black; font-size:14px;"> I've always known that women get paid less than men, but to what extent, I was unsure. The data 
-          displayed in this scatter plot is of 118 different occupations. I isolated these particular occupations because they were the only 
-          occupations that had no null values for men, women, or men and women combined. The data set sets a null value for the average weekly 
-          income in the event that that particular gender has less than 50,000 persons occupying the particular occupation. Once those sets were 
-          removed, I added an extra row that calculated the ratio of women to men pay. If the ratio was below .95, the row was given a 1 value; 
-          if it was greater than .95 and less than 1.05, it was given a value of 2, and if it was greater than 1.05, it was given a value of 0.
-          A zero value (women are paid higher than men) is extremely difficult to come by, as you should be able to see above. In ONLY TEN 
-          occupations do women enjoy income equality, and even more scarcely, in ONLY TWO occupations do women enjoy a noticable difference in pay
-           over their male counterparts. That leaves a whopping 106 occupations where men are paid noticably higher than their female counterparts.
-        </p>
-    <p>So the answer is yes, women ARE paid less than men, almost across the board.</p>
-
-      </section>
-  <div class="jumbotron text-center" id="">
-      <h1>Is state income data any different?</h1>
-      <p style = "font-size:20px;"></p>
-    </div>
-
-    <section class="content" id = "vis2">
       <iframe src="map/map.html" class="center" scrolling="no" height="700"></iframe>
       <p style= "color:black; font-size:10px;"> Source: American Community Survey, Census Bureau -- https://nwlc.org/resources/wage-gap-state-women-overall-2015/</p>
 
@@ -108,6 +77,30 @@
           issue, while the states in the center don't seem to care much. Some of these states are well below the average of 20 years 
           ago. 
         </p>
+
+      </section>
+  <div class="jumbotron text-center" id="">
+      <h2>Okay, so are women ever paid equally?</h2>
+    </div>
+  <section class="content" id = "vis2">
+      <iframe src="scatterE/scat.html" class="center" scrolling="no" height="638"></iframe>
+      <p style= "color:black; font-size:10px;"> Source: U.S. Government, Bureau of Labor Statistics -- https://www.bls.gov/cps/cpsaat39.htm</p>
+
+    </section>
+  
+  <section class="no-padding content">
+
+        <p style="color:black; font-size:14px;"> I've always known that women get paid less than men, but to what extent, I was unsure. The data 
+          displayed in this scatter plot is of 118 different occupations. I isolated these particular occupations because they were the only 
+          occupations that had no null values for men, women, or men and women combined. The data set sets a null value for the average weekly 
+          income in the event that that particular gender has less than 50,000 persons occupying the particular occupation. Once those rows were 
+          removed, I added an extra row that calculated the ratio of women to men pay. If the ratio was below .95, the row was given a 1 value; 
+          if it was greater than .95 and less than 1.05, it was given a value of 2, and if it was greater than 1.05, it was given a value of 0.
+          A zero value (women are paid higher than men) is extremely difficult to come by, as you should be able to see above. In ONLY TEN 
+          occupations do women enjoy income equality, and even more scarcely, in ONLY TWO occupations do women enjoy a noticable difference in pay
+           over their male counterparts. That leaves a whopping 106 occupations where men are paid noticably higher than their female counterparts.<br>
+       So yes, but really, no... Women are very rarely paid equally, and even more scarcely are they paid higher than men.
+    </p>
 
       </section>
   
@@ -129,7 +122,8 @@
           Actually, the interesting answer to why women are paid less than men is not that men are just a bunch of cruel people that 
           want to see women fail miserably so that they stay dependent on men. While I understand that rhetoric, and I also understand 
           societal norms, it is time for women to start occupying more higher paying jobs. If women don't start burowing their way into 
-          higher paying jobs, no matter what happens, women will always statistically make less money than men. 
+          higher paying jobs, no matter what happens, women will always statistically make less money than men. But, tat doesn't excuse 
+          the overwhelming discrepancies within each particular occupation. 
         </p>
     <p></p>
 
