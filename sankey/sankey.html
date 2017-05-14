@@ -7,7 +7,7 @@
 
 body
 {
-	background: #f0f0f0;
+  background: #f0f0f0;
 	margin: 0;
 	font-family: "Helvetica Neue", sans-serif;
 }
@@ -43,6 +43,7 @@ body
 <body>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://unpkg.com/d3-sankey@0"></script>
+<center><h3 class = "title">Who Dominates the Top and Bottom 20 Paying Occupations</h3></center>
 <center><button type="button" onclick="top20()">Top 20</button>
 <button type="button" onclick="all20()">All</button>
 <button type="button" onclick="bottom20()">Bottom 20</button></center>
@@ -53,9 +54,7 @@ body
 		width = 960 - margin.left - margin.right,
 		height = 500 - margin.top - margin.bottom;
 
-	var formatNumber = d3.format(",.0f"),
-		format = function(d) { return "$" + formatNumber(d); },
-		color = d3.scaleOrdinal(d3.schemeCategory20);
+	var color = d3.scaleOrdinal(d3.schemeCategory20);
 
 	// append the svg object to the body of the page
 	var svg = d3.select("#sank").append("svg")
@@ -138,7 +137,7 @@ body
 			{
 				return d.source.name + " → " 
 				+ d.target.name + "\n" 
-				+ format(d.value);
+				+ d.value*1000/1000000 + "m workers";
 			});
 
 	// add in the nodes
@@ -179,7 +178,7 @@ body
 			.append("title")
 			.text(function(d)
 			{ 
-				return d.name + " Workers \n" + d.value; 
+				return d.name + " Workers \n" + d.value*1000/1000000 + "m";
 			});
 
 	// add in the title for the nodes
@@ -196,11 +195,11 @@ body
 			{
       if(d.name === "Top 20" || d.name === "Bottom 20")
         {
-					return d.name + " workers";
+					return d.name + " Occupations";
         }
       else if(d.name === "Total")
         {
-          return d.name + " workers: " + d.value;
+          return d.name + " Workers: " + d.value*1000/1000000+"m";
         }
       else
         {
@@ -304,7 +303,7 @@ body
 				{
 					return d.source.name + " → " 
 					+ d.target.name + "\n" 
-					+ format(d.value);
+					+ d.value*1000/1000000 + "m workers";
 				});
 
 			var node = svg.append("g").selectAll(".node")
@@ -343,7 +342,7 @@ body
 				.append("title")
 				.text(function(d)
 				{ 
-					return d.name + " Workers \n" + d.value; 
+					return d.name + " Workers \n" + d.value*1000/1000000 + "m"; 
 				});
 
 			node.append("text")
@@ -359,7 +358,7 @@ body
 				{
         if(d.name === "Top 20" || d.name === "Bottom 20")
         {
-					return d.name + " workers";
+					return d.name + " Occupations";
         }
       else if(d.name === "Total")
         {
@@ -469,7 +468,7 @@ body
 				{
 					return d.source.name + " → " 
 					+ d.target.name + "\n" 
-					+ format(d.value);
+					+ d.value*1000/1000000 + "m workers";
 				});
 
 			var node = svg.append("g").selectAll(".node")
@@ -508,7 +507,7 @@ body
 				.append("title")
 				.text(function(d)
 				{ 
-					return d.name + " Workers \n" + d.value; 
+					return d.name + " Workers \n" + d.value*1000/1000000 + "m";
 				});
 
 			node.append("text")
@@ -524,7 +523,7 @@ body
 				{
         if(d.name === "Top 20" || d.name === "Bottom 20")
         {
-					return d.name + " workers";
+					return d.name + " Occupations";
         }
       else if(d.name === "Total")
         {
@@ -634,7 +633,7 @@ body
 				{
 					return d.source.name + " → " 
 					+ d.target.name + "\n" 
-					+ format(d.value);
+					+ d.value*1000/1000000 + "m workers";
 				});
 
 			var node = svg.append("g").selectAll(".node")
@@ -673,7 +672,7 @@ body
 				.append("title")
 				.text(function(d)
 				{ 
-					return d.name + " Workers \n" + d.value; 
+					return d.name + " Workers \n" + d.value*1000/1000000 + "m";
 				});
 
 			node.append("text")
@@ -689,7 +688,7 @@ body
 				{
 			if(d.name === "Top 20" || d.name === "Bottom 20")
         {
-					return d.name + " workers";
+					return d.name + " Occupations";
         }
       else if(d.name === "Total")
         {
