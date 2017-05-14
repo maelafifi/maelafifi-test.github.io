@@ -7,15 +7,12 @@ rect
   fill: transparent;
   shape-rendering: crispEdges;
 }
-	
-#xAxis
+  body
 {
-	width: 33em;  height: 1.8em;
-	background-color: pink;
-	color: blue;
-	font-size: 12px;
-	transform: translateX(20vw);
+  background: #f0f0f0;
 }
+	
+
 .axis path,
 .axis line
 {
@@ -61,7 +58,6 @@ rect
 	top: 100%;
 	left: 0;
 }
-
 h2.title
 {
 	transform: translateX(21vw);
@@ -72,7 +68,7 @@ h2.title
 <body>
 
 <h2 class = "title">Ratio of Women to Men/Average Pay</h2>
-<input type="button" id="xAxis" value="Click here to view average earnings compared to womens earnings">
+<center><input type="button" id="xAxis" value="Women:Men / Women:Average"></center>
 
 <center>
 	<div id="scatter"></div>
@@ -245,7 +241,7 @@ h2.title
 				}
 				else if(d == 2)
 				{
-					return "Insignificant Difference"
+					return "Minimal Difference"
 				}
 				else
 				{
