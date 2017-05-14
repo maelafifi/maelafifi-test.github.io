@@ -12,12 +12,16 @@ path:hover
 {
 	fill-opacity: .5;
 }
-
-.axis--x path
-{
-	display: none;
+  
+.axis path {
+  fill: none;
 }
-
+  
+.axis line {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.5);
+}
+  
 .background
 {
 	fill: transparent;
@@ -36,8 +40,8 @@ path:hover
 	line-height: 1;
 	font-weight: bold;
 	padding: 12px;
-	background: rgba(0, 0, 0, 0.8);
-  color: #fff;
+	background: rgba(255, 255, 255, 0.8);
+  color: black;
 	border-radius: 2px;
 }
 
@@ -48,7 +52,7 @@ path:hover
 	font-size: 10px;
 	width: 100%;
 	line-height: 1;
-	color: rgba(0, 0, 0, 0.8);
+	color: rgba(255, 255, 255, 0.8);
 	content: "\25BC";
 	position: absolute;
 	text-align: center;
@@ -211,16 +215,40 @@ d3.csv("data.csv", function(data)
 					});
 				
 				bar.append("rect")
+        .attr("width", 0)
+      	.attr("height", bar)
+      	.transition()
+      	.duration(1000)
 					.attr("width", x)
 					.attr("height", barHeight - 1)
-					.attr("fill", "blue");
+					.attr("fill", function(d)
+               {
+          if(d === d3.max(dataset))
+            {
+              return highColor;
+            }
+          else
+            {
+              return lowColor;
+            }
+        });
 
 				bar.append("text")
 					.attr("x", 2)
 					.attr("y", barHeight / 2)
 					.attr("dy", ".35em")
-					.attr("fill", "white")
-					.style("font-size", "10px")
+					.attr("fill", function(d)
+               {
+          if(d === d3.max(dataset))
+            {
+             return "black";
+             }
+          else
+            {
+              return "black";
+            }
+        })
+        	.style("font-size", "10px")
 					.text(function(d)
 					{
 						if(d === d3.max(dataset))
@@ -236,7 +264,7 @@ d3.csv("data.csv", function(data)
 				.on("mouseout", tip.hide);; 
 			});
 	
-	var w = 140, h = 300;
+	var w = 140, h = 250;
 	
 	var key = d3.select("body")
 		.append("svg")
