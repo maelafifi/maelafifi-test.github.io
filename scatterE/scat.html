@@ -2,14 +2,20 @@
 <head>
 <meta charset="utf-8">
 <style>
-rect
+
+.background
 {
-  fill: transparent;
-  shape-rendering: crispEdges;
+	fill: #f0f0f0;
+	pointer-events: all;
+}
+  
+.tipSVG
+{
+	font-size: 5em;
 }
   body
 {
-  background: #f0f0f0;
+  background: silver;
 }
 	
 
@@ -19,6 +25,7 @@ rect
 	fill: none;
 	stroke: rgba(0, 0, 0, 0.1);
 	shape-rendering: crispEdges;
+  
 }
 .axisLine
 {
@@ -26,20 +33,25 @@ rect
 	shape-rendering: crispEdges;
 	stroke: rgba(0, 0, 0, 0.5);
 	stroke-width: 2px;
+  
 }
 .dot
 {
-	fill-opacity: .8;
+	fill-opacity: 1;
+  
 }
 .d3-tip
 {
 	line-height: 1;
 	font-weight: bold;
 	padding: 12px;
-	background: rgba(0, 0, 0, 0.8);
-	color: #fff;
+	background: rgba(255, 255, 255, 0.8);
+  color: black;
 	border-radius: 2px;
+  
+  font-size: .8em;
 }
+
 .d3-tip:after
 {
 	box-sizing: border-box;
@@ -47,11 +59,13 @@ rect
 	font-size: 10px;
 	width: 100%;
 	line-height: 1;
-	color: rgba(0, 0, 0, 0.8);
+	color: rgba(255, 255, 255, 0.8);
 	content: "\25BC";
 	position: absolute;
 	text-align: center;
+  
 }
+
 .d3-tip.n:after
 {
 	margin: -1px 0 0 0;
@@ -61,8 +75,11 @@ rect
 h2.title
 {
 	transform: translateX(21vw);
-	font: sans-serif;
 }
+  
+
+
+
 </style>
 </head>
 <body>
@@ -76,7 +93,7 @@ h2.title
 <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.3/d3-tip.min.js"></script>
 <script>
-	var margin = { top: 30, right: 250, bottom: 35, left: 50 },
+	var margin = { top: 25, right: 175, bottom: 25, left: 50 },
 	outerWidth = 800,
 	outerHeight = 560,
 	width = outerWidth - margin.left - margin.right,
@@ -130,25 +147,23 @@ h2.title
 		
 		var tip = d3.tip()
 			.attr("class", "d3-tip")
-			.offset([-10, 0])
+			.offset([-60, 0])
 			.html(function(d)
 			{
 				var z;
-				var l = "Earning Ratio: ";
 				var ratio = d[yCat]/d[xCat];
-        			ratio = ratio.toPrecision(3);
-        		if(xCat === "earningsMen")
+        ratio = ratio.toPrecision(3);
+        if(xCat === "earningsMen")
 				{
-					z = "Men's Earnings";
+					l = "Women to Men Earnings Ratio: ";
 				}
         		else
 				{
-					z = "Average Earnings";
+					l = "Women to Average Earnings Ratio: ";
 				}
 				return "Occupation: " + d[Occ] + "<br>" 
-				+ z +": $" + d[xCat] + "<br>"
-				+ "Women's Earnings: $" + d[yCat] + "<br>"
-        			+ l + ratio;;
+        + "<div id='tipDiv'></div><br>" 
+				+ l + ratio;;
 			});
 		var zoomer = d3.behavior.zoom()
 			.x(x)
@@ -167,7 +182,8 @@ h2.title
 		
 		svg.append("rect")
 			.attr("width", width)
-			.attr("height", height);
+			.attr("height", height)
+    	.attr("class", "background");
 		
 		svg.append("g")
 			.classed("x axis", true)
@@ -218,7 +234,86 @@ h2.title
 					return "#fa9fb5";
 				}
 			})
-			.on("mouseover", tip.show)
+			.on("mouseover",  function(d)
+			{
+				tip.show(d);
+				var men = d.earningsMen;
+				var women = d.earningsWomen;
+      	var total = d.earningsTotal;
+				var dataset = [men, total,women];
+				var barHeight = 15;
+      			
+      			var tipSVG = d3.select("#tipDiv")
+      				.append("svg")
+      				.attr("width", 150)
+      				.attr("height", barHeight * 3);
+     				
+     			var x = d3.scale.linear()
+     				.domain([0, d3.max(dataset)])
+     				.range([0, 150]);
+
+				var bar = tipSVG.selectAll("g")
+					.data(dataset)
+					.enter().append("g")
+					.attr("transform", function(d, i)
+					{
+						return "translate(0," + i * barHeight + ")";
+					});
+				
+				bar.append("rect")
+        .attr("width", 0)
+      	.transition()
+      	.duration(1000)
+					.attr("width", x)
+					.attr("height", barHeight - 1)
+					.attr("fill", function(d)
+               {
+          if(d === men)
+            { 
+              return "blue";
+            }
+          else if (d === women)
+            {
+              return "#fa9fb5";
+            }
+          else
+            {
+              return "green";
+            }
+        });
+
+				bar.append("text")
+					.attr("x", 2)
+					.attr("y", barHeight / 2)
+					.attr("dy", ".35em")
+					.attr("fill", function(d)
+               {
+          if(d === men || d === total)
+            {
+             return "#f0f0f0";
+             }
+          else
+            {
+              return "grey";
+            }
+        })
+        	.style("font-size", "10px")
+					.text(function(d)
+					{
+						if(d === men)
+						{
+							return "Mens Salary: $" + d;
+						}
+						else if(d === women)
+						{
+							return "Womens Salary: $" + d;
+						}
+          else
+            {
+              return "Average Salary: $" + d;
+            }
+					});
+				})
 			.on("mouseout", tip.hide);
   
 		var legend = svg.selectAll(".legend")
