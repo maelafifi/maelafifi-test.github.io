@@ -355,6 +355,7 @@ h2.title
 				var svg = d3.select("#scatter").transition();
 				svg.select(".x.axis").duration(750).call(xAxis)
 				.select(".label").text("Average Earnings (weekly)");
+				svg.select(".y.axis").duration(750).call(yAxis);
 				objects.selectAll(".dot").transition().duration(1000)
 				.attr("transform", transform); 
         		count--;
@@ -367,6 +368,7 @@ h2.title
 				var svg = d3.select("#scatter").transition();
 				svg.select(".x.axis").duration(750).call(xAxis)
 				.select(".label").text("Men Earnings (weekly)");
+				svg.select(".y.axis").duration(750).call(yAxis);
 				objects.selectAll(".dot").transition().duration(1000)
 				.attr("transform", transform);
 				count++;  
